@@ -8,6 +8,10 @@ var (
 	EnvMap map[string]string
 )
 
+func init() {
+	EnvMap = make(map[string]string)
+}
+
 func Load(envfile ...string) {
 	for _, fi := range envfile {
 		loadFile(fi)
