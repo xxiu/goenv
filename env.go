@@ -1,6 +1,8 @@
 package goenv
 
 import (
+	"strconv"
+
 	log "github.com/sirupsen/logrus"
 )
 
@@ -32,6 +34,34 @@ func loadFile(file string) {
 	}
 }
 
-func Getenv(s string) string {
-	return EnvMap[s]
+func Getenv(value string) string {
+	return EnvMap[value]
+}
+
+func String(value string) string {
+	return Getenv(value)
+}
+
+func Int(value string) int {
+	v := Getenv(value)
+	if s, err := strconv.Atoi(v); err == nil {
+		return s
+	}
+	return 0
+}
+
+func Boolean(value string) bool {
+	v := Getenv(value)
+	if s, err := strconv.ParseBool(v); err == nil {
+		return s
+	}
+	return false
+}
+
+func Float(value string) float64 {
+	v := Getenv(value)
+	if s, err := strconv.ParseFloat(v, 64); err == nil {
+		return s
+	}
+	return 0
 }
