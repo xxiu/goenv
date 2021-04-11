@@ -1,9 +1,9 @@
 # goenv
 
-
-
 autoload .env 
 
+Instead of `os.Getenv`
+ 
 
 ## example 
 
